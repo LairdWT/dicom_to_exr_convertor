@@ -4,10 +4,7 @@ use indicatif::{ProgressBar, ProgressStyle};
 use std::fs;
 
 fn main() {
-    // Get the current working directory
     let cwd = std::env::current_dir().expect("Failed to get current directory");
-
-    // Define the input and output folder paths
     let input_folder = cwd.join("input");
     let output_folder = cwd.join("output");
 
@@ -16,7 +13,6 @@ fn main() {
         fs::create_dir(&output_folder).expect("Failed to create output folder");
     }
 
-    // Get the list of DICOM files in the input folder
     let dcm_files = fs::read_dir(&input_folder)
         .expect("Failed to read input folder")
         .filter_map(|entry| {
@@ -52,7 +48,6 @@ fn main() {
 
         let output_path = output_folder.join(file_name + ".exr");
 
-        // Decode the pixel data and save the output image
         match open_file(&file_path) {
             Ok(obj) => {
                 match obj.decode_pixel_data() {
@@ -79,6 +74,5 @@ fn main() {
         }
     }
 
-    // Finish the progress bar
     progress_bar.finish_with_message("Done");
 }

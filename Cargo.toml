@@ -1,0 +1,13 @@
+[package]
+name = "dicom_to_image_converter"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+dicom = "0.5.4"
+dicom-object = "0.5.4"
+dicom-pixeldata = "0.1.5"
+image = "0.24.6"
+indicatif = "0.17.3"
